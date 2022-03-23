@@ -4,11 +4,13 @@ const { check } = require('express-validator')
 module.exports = {
     requireTitle: check('title')
         .trim()
-        .isLength({ min: 5, max: 40 }),
+        .isLength({ min: 5, max: 40 })
+        .withMessage('Must be between 5-40 characters'),
     requirePrice: check('price')
         .trim()
         .toFloat()
-        .isFloat({ min: 1 }),
+        .isFloat({ min: 1 })
+        .withMessage('Must be a value greater than 1'),
     requireEmail: check('email')
         .trim()
         .normalizeEmail()
